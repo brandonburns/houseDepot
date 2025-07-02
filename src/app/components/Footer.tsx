@@ -11,7 +11,7 @@ export default function Footer () {
                     <div className="flex flex-col md:flex-row items-center justify-between">
                         <div className="mb-8 md:mb-0 mb:max-w-xl">
                             <h2 className="text-3xl font-bold text-white mb-2">Join our Email List</h2>
-                            <p className="text-white/80">Sing up for the latest news on power tools and home goods.</p>
+                            <p className="text-white/80">Sign up for the latest news on power tools and home goods.</p>
                         </div>
                         <div className="w-full md:w-auto">
                             <form className="flex flex-col sm:flex-row gap-2">
