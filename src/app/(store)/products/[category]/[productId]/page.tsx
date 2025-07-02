@@ -8,11 +8,11 @@ import { productsList, Product, categories, Category } from '@/app/data/products
 export default function ProductPage({params}: {params: Promise<{category: string, productId: string}>}) {
     const [quantity, setQuantity] = useState(1);
     const [product, setProduct] = useState<Product | null>(null);
-    const [category, setCategory] = useState<Category | null>(null)
+    const [category, setCategory] = useState<Category | null>(null);
 
     useEffect(() => {
         const fetchParams = async () => {
-            const resolvedParams = await params;
+            const resolvedParams = await params
             const foundProduct = productsList.find(prod => prod.id === resolvedParams.productId)
             if(!foundProduct || foundProduct.category.toLowerCase() !== resolvedParams.category.toLowerCase()) {
                 return;
@@ -28,8 +28,6 @@ export default function ProductPage({params}: {params: Promise<{category: string
 
         fetchParams()
     }, [params]);
-
-    console.log('Product ** ', product)
 
     const handleMinus = () => {
         if (quantity >= 2) {

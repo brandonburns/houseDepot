@@ -2,13 +2,24 @@ import {Product, productsList, categories} from '@/app/data/products'
 import Link from '../../../../../node_modules/next/link';
 import ProductCard from '@/app/components/ProductCard';
 
+export async function generateStaticParams() {
+    const _categories = categories.map(cat => cat.name)
+
+    return _categories.map((category) => {
+        return {
+            category,
+        }
+    })
+
+    // If actually fetching data, could use revalidate to implement ISR for this component
+}
+
 export default async function CategoryPage({params}: {params: Promise <{category: string}>}) {
     const parameters = await params;
     const categorySlug = parameters.category.toLowerCase();
     const categoryProducts: Product[] = productsList.filter(product => product.category.toLowerCase() === categorySlug);
     const categoryInfo = categories.find(category => category.slug === categorySlug);
     const categoryName = categoryInfo?.name || parameters.category
-    console.log('cproducts ', categoryProducts)
 
     return (
         <div className="max-w-7xl mx-auto px-4 py-12">
